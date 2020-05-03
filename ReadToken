@@ -1,0 +1,43 @@
+#include<cstdio>
+#include <iostream>
+#include<string>
+#include<map>
+#include<set>
+#include <fstream>
+using namespace std;
+
+map<int, string > token;
+
+void readToken()
+{
+	ifstream infile;
+	infile.open("token.txt", ios::in);   //将文件流对象与文件连接起来 
+	if (infile)
+	{
+		string c;
+		int a;
+		while (!infile.eof())
+		{
+			infile >> c;
+			infile >> a;
+			token[a] = c;
+		}
+	}
+	else
+	{
+		cout << "没有找到文件";
+	}
+
+	infile.close();             //关闭文件输入流 
+}
+
+/*int main()
+{
+	readToken();
+	map<int, string>::iterator it;
+	for (it = token.begin(); it != token.end(); it++)	//遍历map
+		cout << it->first << ":" << it->second << endl;
+
+	cout << endl << "91:" << token[91] << endl;//查看token[91]的值，输出ID
+
+}*/
